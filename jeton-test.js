@@ -4,14 +4,11 @@ module.exports = function(RED) {
         var node = this;
         node.on('input', function(msg) {
             var total = 0;
-            if(msg.number !== "" || msg.number !== undefined){
-                var parsed = parseInt(msg.number);
-                total = (parsed * parsed) + 3;
-                msg.payload = `(${parsed} * ${parsed}) +3 = ${total}`;
-                node.send(msg);
-            }else{
-                node.send(msg);
-            }
+            var parsed = parseInt(msg.number);
+            total = (parsed * parsed) + 3;
+            msg.payload = `${total}`;
+            this.status({fill:"red",shape:"ring",text:"disconnected"});
+            node.send(msg);
         });
     }
     RED.nodes.registerType("jeton-test",Calc);
