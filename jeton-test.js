@@ -3,12 +3,14 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
         node.on('input', function(msg) {
-            msg.headers['content-type'] = 'application/json';
             var total = 0;
             var number = msg.number;
+            if(number !== "" || number !== undefined){
                 var parsed = parseInt(number);
                 total = (parsed * parsed) + 3;
-                node.send({total: total});
+                msg.payload = '(' + parsed + ' * ' + parsed + ')+ 3 = '+total;
+                node.send(msg.payload);
+            }
         });
     }
     RED.nodes.registerType("jeton-test",Calc);
