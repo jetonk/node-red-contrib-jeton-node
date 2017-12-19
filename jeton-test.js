@@ -3,8 +3,8 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
         node.on('input', function(msg) {
-            var total = undefined;
-            var parsed = parseInt(msg.req.params.number);
+            var total = 0;
+            var parsed = parseInt(msg.payload.number);
             total = (parsed * parsed) + 3;
             msg.payload = `${total}`;
             this.status({fill:"red",shape:"ring",text: JSON.stringify({parsed: parsed, total: total})});
