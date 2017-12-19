@@ -3,11 +3,11 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
         node.on('input', function(msg) {
-            var total = 0;
+            var total = undefined;
             var parsed = parseInt(msg.number);
             total = (parsed * parsed) + 3;
-            //msg.payload = `${total}`;
-            this.status({fill:"red",shape:"ring",text:"disconnected"});
+            msg.payload = `${total}`;
+            this.status({fill:"red",shape:"ring",text: JSON.stringify({parsed: parsed, total: total})});
             node.send(msg);
         });
     }
