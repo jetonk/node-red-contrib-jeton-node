@@ -1,0 +1,29 @@
+<script type="text/javascript">
+    RED.nodes.registerType('jeton-test',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            number: {value: 9},
+            amount: {value: 3}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"lower-case";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="jeton-test">
+    <div class="form-row">
+        <label for="node-input-number"><i class="icon-tag"></i> Number</label>
+        <input type="text" id="node-input-number" placeholder="Number">
+        <label for="node-input-amount"><i class="icon-tag"></i> Amount</label>
+        <input type="text" id="node-input-amount" placeholder="Amount">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="lower-case">
+    <p>Simple Math Test</p>
+</script>
