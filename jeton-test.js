@@ -9,7 +9,7 @@ module.exports = function(RED) {
                 var parsed = parseInt(number);
                 total = (parsed * parsed) + 3;
                 msg.payload = '(' + parsed + ' * ' + parsed + ')+ 3 = '+total;
-                node.send(msg.payload);
+                node.send(msg);
             }
         });
     }
