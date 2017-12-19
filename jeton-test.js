@@ -8,7 +8,7 @@ module.exports = function(RED) {
             if(number !== "" || number !== undefined){
                 var parsed = number;
                 total = (parsed * parsed) + 3;
-                msg.payload = '(' + parsed + ' * ' + parsed + ')+ 3 = '+ total;
+                //msg.payload = '(' + parsed + ' * ' + parsed + ')+ 3 = '+ total;
                 node.send(msg);
             }else{
                 node.send(msg);
