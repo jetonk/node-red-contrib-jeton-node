@@ -3,7 +3,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
         node.on('input', function(msg) {
-            node.send(msg.req.query.number);
+            node.send(msg.req.query);
         });
     }
     RED.nodes.registerType("jeton-test",Calc);
