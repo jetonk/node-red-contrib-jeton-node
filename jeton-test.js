@@ -6,10 +6,10 @@ module.exports = function(RED) {
             var total = 0;
             var parsed = parseInt(msg.number);
             total = (parsed * parsed) + 3;
-            msg.payload = `${total}`;
+            //msg.payload = `${total}`;
             this.status({fill:"red",shape:"ring",text:"disconnected"});
             node.send(msg);
         });
     }
-    RED.nodes.registerType("jeton-test",Calc);
+    RED.nodes.registerType("jeton-test", Calc);
 };
