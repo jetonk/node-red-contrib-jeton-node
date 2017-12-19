@@ -8,7 +8,7 @@ module.exports = function(RED) {
             if(number !== "" || number !== undefined){
                 var parsed = parseInt(number);
                 total = (parsed * parsed) + 3;
-                node.send('(' + parsed + ' * ' + parsed + ')+ 3 = '+total);
+                node.send({response: '(' + parsed + ' * ' + parsed + ')+ 3 = '+total});
             }
         });
     }
