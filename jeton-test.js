@@ -6,7 +6,7 @@ module.exports = function(RED) {
             var total = 0;
             var parsed = parseInt(msg.payload.number);
             total = (parsed * parsed) + 3;
-            msg.payload = `${total}`;
+            msg.payload = '(' + parsed + ' * ' + parsed + ') + 3 = '+ total;
             this.status({fill:"red",shape:"ring",text: JSON.stringify({parsed: parsed, total: total})});
             node.send(msg);
         });
