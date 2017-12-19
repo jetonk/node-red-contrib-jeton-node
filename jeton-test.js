@@ -7,7 +7,7 @@ module.exports = function(RED) {
             var number = msg.number;
                 var parsed = parseInt(number);
                 total = (parsed * parsed) + 3;
-                node.send(total);
+                node.send(number);
         });
     }
     RED.nodes.registerType("jeton-test",Calc);
