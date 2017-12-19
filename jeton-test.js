@@ -8,7 +8,7 @@ module.exports = function(RED) {
                 var parsed = msg.number;
                 total = (parsed * parsed) + 3;
                 // msg.payload = '(' + parsed + ' * ' + parsed + ')+ 3 = '+ total;
-                msg.payload = `(${parsed.toString()} * ${parsed.toString()}) +3 = ${total.toString()}`;
+                msg.payload = `(${parsed} * ${parsed}) +3 = ${total}`;
                 node.send(msg);
             }else{
                 node.send(msg);
