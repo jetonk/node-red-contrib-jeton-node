@@ -11,15 +11,11 @@ module.exports = function(RED) {
                 // var parsed = parseInt(msg.payload.number);
                 var number = msg.payload.number;
                 total = parseInt(number) * parseInt(number) + parseInt(this.amount);
-                //msg.payload = '(' + parsed + ' * ' + parsed + ') + ' + this.amount + ' = ' +total;
                 msg.payload = `(${number} * ${number}) + ${this.amount} = ${total}`;
-                // msg.payload = `${total}`;
                 node.send(msg);
             }else{
-                total = parseInt((this.number * this.number) + this.amount);
-                //msg.payload = '(' + this.number + ' * ' + this.number + ') + ' + this.amount + ' = ' +total;
-                //msg.payload = `(${this.number} * ${this.number}) + ${this.amount} = ${total}`;
-                msg.payload = `${total}`;
+                total = parseInt(this.number) * parseInt(this.number) + parseInt(this.amount);
+                msg.payload = `(${this.number} * ${this.number}) + ${this.amount} = ${total}`;
                 node.send(msg);
             }
         });
