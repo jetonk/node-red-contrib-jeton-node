@@ -12,7 +12,7 @@ module.exports = function(RED) {
                 var number = msg.payload.number;
                 total = parseInt(number) * parseInt(number) + parseInt(this.amount);
                 //msg.payload = '(' + parsed + ' * ' + parsed + ') + ' + this.amount + ' = ' +total;
-                msg.payload = `(${number} * ${parsed}) + ${this.amount} = ${total}`;
+                msg.payload = `(${number} * ${number}) + ${this.amount} = ${total}`;
                 // msg.payload = `${total}`;
                 node.send(msg);
             }else{
