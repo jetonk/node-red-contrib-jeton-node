@@ -13,7 +13,7 @@ module.exports = function(RED) {
                 msg.payload = '(' + parsed + ' * ' + parsed + ') + ' +this.amount+ ' = ' +total;
                 node.send(msg);
             }else{
-                total = parseInt(this.number * this.number + this.amount);
+                total = this.number * this.number + this.amount;
                 msg.payload = '(' + this.number + ' * ' + this.number + ') +' +this.amount+ ' = ' +total;
                 node.send(msg);
             }
