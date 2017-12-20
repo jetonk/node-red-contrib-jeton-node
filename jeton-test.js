@@ -17,6 +17,7 @@ module.exports = function(RED) {
             //     msg.payload = `(${this.number} * ${this.number}) + ${this.amount} = ${total}`;
             //     node.send(msg);
             // }
+            node.send(msg);
         });
     }
     RED.nodes.registerType("jeton-test", Calc);
