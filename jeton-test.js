@@ -6,6 +6,7 @@ module.exports = function(RED) {
         var node = this;
         node.on('input', function(msg) {
             var total = 0;
+            this.status({fill:"red",shape:"ring", text: JSON.stringify({number: msg.payload.number, msg: msg.payload})});
             if(msg.payload.number !== ""){
                 var parsed = parseInt(msg.payload.number);
                 total = (parsed * parsed) + this.amount;
@@ -13,9 +14,7 @@ module.exports = function(RED) {
                 node.send(msg);
             }else{
                 total = (this.number * this.number) + this.amount;
-                this.status({fill:"red",shape:"ring", text: JSON.stringify({total: total, number: config.number})});
-                // msg.payload = '(' + this.number + ' * ' + this.number + ') +' +this.amount+ ' = ' +total;
-                msg.payload = 'total: '+ total + 'number: ' + this.number;
+                msg.payload = '(' + this.number + ' * ' + this.number + ') +' +this.amount+ ' = ' +total;
                 node.send(msg);
             }
         });
