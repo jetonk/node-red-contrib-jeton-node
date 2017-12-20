@@ -1,8 +1,8 @@
 module.exports = function(RED) {
     function Calc(config) {
         RED.nodes.createNode(this,config);
-        this.number = 9;
-        this.amount = 3;
+        this.number = config.number;
+        this.amount = config.amount;
         var node = this;
         node.on('input', function(msg) {
             var total = 0;
@@ -14,7 +14,8 @@ module.exports = function(RED) {
             }else{
                 total = (this.number * this.number) + this.amount;
                 this.status({fill:"red",shape:"ring", text: JSON.stringify({total: total, number: config.number})});
-                msg.payload = '(' + this.number + ' * ' + this.number + ') +' +this.amount+ ' = ' +total;
+                // msg.payload = '(' + this.number + ' * ' + this.number + ') +' +this.amount+ ' = ' +total;
+                msg.payload = 'total: '+ total + 'number: ' + this.number;
                 node.send(msg);
             }
         });
