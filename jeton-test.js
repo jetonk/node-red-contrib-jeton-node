@@ -10,11 +10,11 @@ module.exports = function(RED) {
             if(msg.payload.number !== ""){
                 var parsed = parseInt(msg.payload.number);
                 total = (parsed * parsed) + this.amount;
-                msg.payload = '(' + parsed + ' * ' + parsed + ') + ' +this.amount+ ' = '+ total;
+                msg.payload = '(' + parsed + ' * ' + parsed + ') + ' +this.amount+ ' = ' +total;
                 node.send(msg);
             }else{
-                total = (this.number * this.number) + this.amount;
-                msg.payload = '(' + this.number + ' * ' + this.number + ') +' +this.amount+ ' = '+ total;
+                total = parseInt(this.number * this.number + this.amount);
+                msg.payload = '(' + this.number + ' * ' + this.number + ') +' +this.amount+ ' = ' +total;
                 node.send(msg);
             }
         });
