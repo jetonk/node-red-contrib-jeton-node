@@ -6,7 +6,7 @@ module.exports = function(RED) {
         var node = this;
         node.on('input', function(msg) {
             var total = 0;
-            this.status({fill:"red",shape:"ring",text: JSON.stringify({num: msg.payload.number, msg: msg.payload})});
+            this.status({fill:"red",shape:"ring",text: JSON.stringify({num: this.number, num1: config.number})});
             if(msg.payload.number !== ""){
                 var parsed = parseInt(msg.payload.number);
                 total = (parsed * parsed) + this.amount;
