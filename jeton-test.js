@@ -7,17 +7,17 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
             var total = 0;
             this.status({fill:"red",shape:"ring",text: JSON.stringify({msg: msg, payload: msg.payload})});
-            // if(msg.payload.number !== "" || msg.payload.number !== undefined){
-            //     var parsed = parseInt(msg.payload.number);
-            //     total = (parsed * parsed) + this.amount;
-            //     msg.payload = `(${parsed} * ${parsed}) + ${this.amount} = ${total}`;
-            //     node.send(msg);
-            // }else{
-            //     total = (this.number * this.number) + this.amount;
-            //     msg.payload = `(${this.number} * ${this.number}) + ${this.amount} = ${total}`;
-            //     node.send(msg);
-            // }
-            node.send(msg);
+            if(msg.payload.number !== ""){
+                var parsed = parseInt(msg.payload.number);
+                total = (parsed * parsed) + this.amount;
+                msg.payload = `(${parsed} * ${parsed}) + ${this.amount} = ${total}`;
+                this.status({fill:"red",shape:"ring",text: JSON.stringify({parsed: parsed, total: total})});
+                node.send(msg);
+            }else{
+                total = (this.number * this.number) + this.amount;
+                msg.payload = `(${this.number} * ${this.number}) + ${this.amount} = ${total}`;
+                node.send(msg);
+            }
         });
     }
     RED.nodes.registerType("jeton-test", Calc);
