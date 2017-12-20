@@ -1,8 +1,8 @@
 module.exports = function(RED) {
     function Calc(config) {
         RED.nodes.createNode(this,config);
-        this.number = config.number;
-        this.amount = config.amount;
+        this.number = 9;
+        this.amount = 3;
         var node = this;
         node.on('input', function(msg) {
             var total = 0;
