@@ -6,8 +6,8 @@ module.exports = function(RED) {
         var node = this;
         node.on('input', function(msg) {
             var total = 0;
-            this.status({fill:"red",shape:"ring",text: JSON.stringify({payload: msg, number: msg.payload})});
-            // if(msg.payload.number !== "" ){
+            this.status({fill:"red",shape:"ring",text: JSON.stringify({msg: msg, payload: msg.payload})});
+            // if(msg.payload.number !== "" || msg.payload.number !== undefined){
             //     var parsed = parseInt(msg.payload.number);
             //     total = (parsed * parsed) + this.amount;
             //     msg.payload = `(${parsed} * ${parsed}) + ${this.amount} = ${total}`;
