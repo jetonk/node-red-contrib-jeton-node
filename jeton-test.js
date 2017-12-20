@@ -13,7 +13,7 @@ module.exports = function(RED) {
                 this.status({fill:"red",shape:"ring",text: JSON.stringify({parsed: parsed, total: total})});
                 node.send(msg);
             }else{
-                total = (parsed * parsed) + this.amount;
+                total = (this.number * this.number) + this.amount;
                 msg.payload = `(${this.number} * ${this.number}) + ${this.amount} = ${total}`;
                 node.send(msg);
             }
