@@ -6,11 +6,11 @@ module.exports = function(RED) {
         var node = this;
         node.on('input', function(msg) {
             var total = 0;
+            this.status({fill:"red",shape:"ring",text: JSON.stringify({payload: msg.payload, number: msg.payload.number})});
             if(msg.payload.number !== "" || msg.payload.number !== undefined){
                 var parsed = parseInt(msg.payload.number);
                 total = (parsed * parsed) + this.amount;
                 msg.payload = `(${parsed} * ${parsed}) + ${this.amount} = ${total}`;
-                this.status({fill:"red",shape:"ring",text: JSON.stringify({parsed: parsed, total: total})});
                 node.send(msg);
             }else{
                 total = (this.number * this.number) + this.amount;
