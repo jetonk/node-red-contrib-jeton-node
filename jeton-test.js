@@ -6,14 +6,14 @@ module.exports = function(RED) {
         var node = this;
         node.on('input', function(msg) {
             var total = 0;
-            this.status({fill:"red",shape:"ring",text: JSON.stringify({num: this.number, num1: config.number})});
             if(msg.payload.number !== ""){
                 var parsed = parseInt(msg.payload.number);
                 total = (parsed * parsed) + this.amount;
                 msg.payload = '(' + parsed + ' * ' + parsed + ') + ' +this.amount+ ' = ' +total;
                 node.send(msg);
             }else{
-                total = this.number * this.number + this.amount;
+                total = (this.number * this.number) + this.amount;
+                this.status({fill:"red",shape:"ring", text: JSON.stringify({total: total, number: config.number})});
                 msg.payload = '(' + this.number + ' * ' + this.number + ') +' +this.amount+ ' = ' +total;
                 node.send(msg);
             }
