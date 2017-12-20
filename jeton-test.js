@@ -8,11 +8,12 @@ module.exports = function(RED) {
             var total = 0;
             this.status({fill:"red",shape:"ring", text: JSON.stringify({number: msg.payload.number, msg: msg.payload})});
             if(msg.payload.number){
-                var parsed = parseInt(msg.payload.number);
-                total = (parsed * parsed) + this.amount;
+                // var parsed = parseInt(msg.payload.number);
+                var number = msg.payload.number;
+                total = parseInt(number) * parseInt(number) + parseInt(this.amount);
                 //msg.payload = '(' + parsed + ' * ' + parsed + ') + ' + this.amount + ' = ' +total;
-                // msg.payload = `(${parsed} * ${parsed}) + ${this.amount} = ${total}`;
-                msg.payload = `${total}`;
+                msg.payload = `(${number} * ${parsed}) + ${this.amount} = ${total}`;
+                // msg.payload = `${total}`;
                 node.send(msg);
             }else{
                 total = parseInt((this.number * this.number) + this.amount);
